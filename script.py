@@ -19,7 +19,7 @@ def get_index_tickers(list_indexes=list(), load_all=False):
     if not os.path.exists(path):
         os.mkdir(path)
 
-    if all:
+    if load_all:
         list_indexes = ['dowjones', 'sp500', 'dax', 'sptsxc', 'bovespa', 'ftse100', 'cac40', 'ibex35',
                         'eustoxx50', 'sensex', 'smi', 'straitstimes', 'rts', 'nikkei', 'ssec', 'hangseng',
                         'spasx200', 'mdax', 'sdax', 'tecdax']
@@ -173,10 +173,16 @@ def get_index_tickers(list_indexes=list(), load_all=False):
         for t in tickers:
             tickers_all.append(t)
 
-    if tickers_all:
-        return tickers_all
-    else:
-        return -1
+    return tickers_all
+
 
 get_index_tickers(load_all=True)
-print(get_index_tickers(list_indexes=['sp500']))
+
+i = 0
+items = []
+for item in get_index_tickers(list_indexes=['sp500']):
+    items.append(item)
+    if i % 5 == 0:
+        print(items)
+        items = []
+    i += 1
