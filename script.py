@@ -179,4 +179,4 @@ def get_index_tickers(list_indexes=list(), load_all=False):
         return -1
 
 get_index_tickers(load_all=True)
-print(get_index_tickers(list_indexes=['tecdax']))
+print(get_index_tickers(list_indexes=['sp500']))
